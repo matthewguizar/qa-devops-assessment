@@ -20,12 +20,12 @@ var rollbar = new Rollbar({
 rollbar.log('Hello world!')
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../index.html'))
+    res.sendFile(path.join(__dirname, 'public/index.html'))
 })
 
 app.get('/api/robots', (req, res) => {
     try {
-        res.status(200).send(botsArr)
+        res.status(200).send(bots)
     } catch (error) {
         console.log('ERROR GETTING BOTS', error)
         res.sendStatus(400)
