@@ -18,4 +18,10 @@ describe('shuffleArray should', () => {
         let result = shuffleArray(arr)
         expect(result).toEqual(expect.arrayContaining(arr))
      })
+
+     test('shuffles array should return array', () => {
+        let arr = [1, 2, 3, 4, 5]
+        let result = shuffleArray(arr)
+        expect(arr.join()).not.toEqual(result.join())
+     })
 })
