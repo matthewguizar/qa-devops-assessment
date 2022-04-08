@@ -29,11 +29,22 @@ describe('test for duel duo', () => {
         expect(displayed).toBe(true)
     })
 
-    test('for see all bots', async () => {
-        await driver.findElement(By.id('see-all')).click()
-        const allBots = await driver.findElement(By.id('all-bots'))
-        expect(allBots)
+    // test('for see all bots', async () => {
+    //     await driver.findElement(By.id('see-all')).click()
+    //     const allBots = await driver.findElement(By.id('all-bots'))
+    //     expect(allBots)
     
-    })
+    // })
+
+        test('clicking add duo',async () => {
+            await driver.findElement(By.id('draw')).click()
+            await driver.sleep(2000)
+            await driver.findElement(By.xpath('(//button[text()= "Add to Duo"])[1]')).click()
+            const addToDuo = await driver.findElement(By.id('player-duo'))
+            const added = await addToDuo.isDisplayed()
+            expect(added).toBe(true)
+
+        })
+
 })
 

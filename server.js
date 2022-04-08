@@ -14,6 +14,7 @@ var rollbar = new Rollbar({
   accessToken: '76c126781297494fb75baa97b23d18a5',
   captureUncaught: true,
   captureUnhandledRejections: true,
+  captureIp:true
 })
 
 // record a generic message and send it to Rollbar
@@ -25,8 +26,10 @@ app.get('/', (req, res) => {
 
 app.get('/api/robots', (req, res) => {
     try {
+        rollbar.info('someone accessed the bots')
         res.status(200).send(bots)
     } catch (error) {
+        rollbar.critical('someone tried getting bots but unsuccessful')
         console.log('ERROR GETTING BOTS', error)
         res.sendStatus(400)
     }
@@ -34,11 +37,13 @@ app.get('/api/robots', (req, res) => {
 
 app.get('/api/robots/five', (req, res) => {
     try {
+        rollbar.log('someone shuffled the robots')
         let shuffled = shuffleArray(bots)
         let choices = shuffled.slice(0, 5)
         let compDuo = shuffled.slice(6, 8)
         res.status(200).send({choices, compDuo})
     } catch (error) {
+        rollbar.warning('sup dude, theres a warning on getting five')
         console.log('ERROR GETTING FIVE BOTS', error)
         res.sendStatus(400)
     }
