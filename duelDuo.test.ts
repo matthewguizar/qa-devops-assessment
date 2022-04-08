@@ -14,17 +14,19 @@ afterAll(async () => {
 })
 
 describe('test for duel duo', () => {
-    
+
     test('Title shows up when page loads', async () => {
         const title = await driver.findElement(By.id('title'))
         const displayed = await title.isDisplayed()
         expect(displayed).toBe(true)
     })
     
-    test('expecting draw button to reveal array' , async () => {
+    test('expecting draw button to reveal draw' , async () => {
         await driver.findElement(By.id('draw')).click()
-        expect(Array)
         await driver.sleep(2000)
+        const popUp = await driver.findElement(By.id('choices'))
+        const displayed = await popUp.isDisplayed()
+        expect(displayed).toBe(true)
     })
 
     test('for see all bots', async () => {
