@@ -1,3 +1,6 @@
+console.log('yoo')
+
+
 const drawBtn = document.querySelector('#draw')
 const choicesDiv = document.querySelector('#choices')
 const compDuoDiv = document.querySelector('#comp-duo')
