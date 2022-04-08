@@ -1,5 +1,9 @@
 const {shuffleArray} = require('./utils')
 
 describe('shuffleArray should', () => {
-    // CODE HERE
+    test('shuffles array', () => {
+       expect(shuffleArray).toBe(shuffleArray)
+
+    
+})
 })
